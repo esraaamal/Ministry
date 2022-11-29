@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>home</title>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"></script> -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+    integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+    crossorigin=""/>
+
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+   integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+   crossorigin=""></script>
+   <style>
+    #issmap{
+        height: 180px;
+    }
+   </style>
+  </head>
+  <body>
+    <!-- <canvas id="chart" width="400" height="400"></canvas> -->
+    <div id="issmap"></div>
+<p>
+    latitude :<span id="lat"></span> <br/>
+    longitude:<span id="lon"></span>
+
+</p>
+    <script>
+
+var map = L.map('issmap').setView([51.505, -0.09], 13);
+
+async function getISS(){
+    const url='https://api.wheretheiss.at/v1/satellites/25544'
+    const response =await fetch(url)
+    const data=await response.json()
+    const {latitude,longitude}=data
+    console.log(data)
+    console.log(latitude) 
+    console.log(longitude)
+    document.getElementById('lat').textContent=latitude
+    document.getElementById('lon').textContent=longitude
+
+}
+getISS()
+      async function getDate() {
+        const response = await fetch("ZonAnn.Ts+dSST.csv");
+        const data = await response.text();
+        // console.log(data.split('\n').slice(1))
+        let rowData = data.split("\n").slice(1);
+        rowData.forEach((elm) => {
+          let row = elm.split(",");
+          const year = row[0];
+          xlable.push(year);
+          const temp = row[1];
+          console.log(year, temp);
+        
+        });
+      }
+
+      getDate();
+      //Start chart library
+
+    //   const ctx = document.getElementById("chart").getContext("2d");
+    //   const xlable = [];
+    //   console.log(xlable);
+    //   const myChart = new Chart(ctx, {
+    //     type: "bar",
+    //     data: {
+    //       labels: xlable,
+    //       datasets: [
+    //         {
+    //           label: "Global Average Temperature",
+    //           data: [12, 19, 3, 5, 2, 3],
+    //           backgroundColor: ["rgba(255, 99, 132, 0.2)"],
+    //           borderColor: ["rgba(255, 99, 132, 1)"],
+    //           borderWidth: 1,
+    //         },
+    //       ],
+    //     },
+    //   });
+      //End chart library
+    </script>
+  </body>
+</html>

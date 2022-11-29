@@ -1,0 +1,340 @@
+
+html {
+    font-size: 62.5%; /*16px x 62.5=10px=1rem*/
+    box-sizing: border-box;
+  }
+  
+  
+  body {
+    margin: 0;
+    height: 100vh;
+    font-size: 1.6rem;
+    font-family: Helvetica, Arial, sans-serif;
+    overflow-x: hidden;
+    font-weight: 600;
+  background: #ebf5fc;
+
+  }
+
+  .grid-container{
+    height: 100%;
+    display: grid;
+    grid-template-areas: 
+    "header"
+    "main"
+    "footer"
+    ;
+    grid-template-columns: 1fr;
+    grid-template-rows: 6rem 1fr 3rem;
+  }
+
+  header {
+    grid-area: header;
+    /* background: #ecf1f5; */
+  }
+  
+  
+  main {
+    grid-area: main;
+    padding: 1rem;
+  }
+  
+  /* footer {
+    grid-area: footer;
+    background:  white;
+  } */
+
+.centerGenral{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* This class is applied to the containing div <div class="nav"> and is used to set the background color and height of the navbar */
+.nav {
+  background:white;
+  /* height: 65px;  */
+ 
+}
+
+/* This rule centers the nav items verticaly in the bar with the height and line height properties. Spacing between the nav items is controlled by setting right and left padding.  */
+.nav li {
+  display: inline-block;
+  list-style: none;
+  /* height: 65px;  */
+  /* line-height: 65px;  */
+  padding: 16px 20px; 
+}
+
+/* :hover allows you change the background color of the nav items when you mouse over them. Play around with the transition value to change the speed of the hover transition. */
+.nav li:hover {
+  background: linear-gradient(45deg,#b95ce4,#4f29cd);
+  transition: background .3s;
+  color: wheat;
+}
+
+/* This rule is applied to the link <a> tag. It lets you turn off the link underline and set the link text color. */
+a.nav-link {
+  color: rgb(7, 7, 7);
+  text-decoration: none;
+}
+a.nav-link:hover{
+  color: white;
+}
+
+.imgelogojo{
+  width: 50px;
+  height: 54px;
+  cursor: pointer;
+  margin-right: 20px;
+  margin-bottom: 9px;
+}
+
+.mainSection{
+ /* background: -webkit-linear-gradient(bottom, #2dbd6e, #a6f77b); */
+ background: #ebf5fc;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+
+/* /////////sign in css */
+
+.popUpSignUp1{
+  background: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  z-index: 100;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+label {
+  font-family: "Raleway", sans-serif;
+  font-size: 11pt;
+}
+#forgot-pass {
+  color: #b95ce4;
+  font-family: "Raleway", sans-serif;
+  font-size: 10pt;
+  margin-top: 3px;
+  text-align: right;
+}
+#card {
+  background: #fbfbfb;
+  border-radius: 8px;
+  box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.65);
+  height: 418px;
+  margin: 6rem auto 8.1rem auto;
+  width: 329px;
+}
+#card-content {
+  padding: 0px 44px;
+}
+#card-title {
+  font-family: "Raleway Thin", sans-serif;
+  letter-spacing: 4px;
+  padding-bottom: 23px;
+  padding-top: 13px;
+  text-align: center;
+}
+#signup {
+  color: #4f29cd;
+  font-family: "Raleway", sans-serif;
+  font-size: 10pt;
+  margin-top: 16px;
+  text-align: center;
+}
+#signup_btn {
+  background: linear-gradient(45deg,#b95ce4,#4f29cd);
+  border: none;
+  border-radius: 21px;
+  box-shadow: 0px 1px 8px #4f29cd;
+  cursor: pointer;
+  color: white;
+  font-family: "Raleway SemiBold", sans-serif;
+  height: 42.3px;
+  margin: 0 auto;
+  margin-top: 20px;
+  transition: 0.25s;
+  width: 153px;
+}
+#signup_btn:hover {
+  box-shadow: 0px 1px 18px #b95ce4;
+}
+.form {
+  align-items: left;
+  display: flex;
+  flex-direction: column;
+}
+.form-border {
+  background: linear-gradient(45deg,#b95ce4,#4f29cd);
+  height: 1px;
+  width: 100%;
+}
+.form-content {
+  background: #fbfbfb;
+  border: none;
+  outline: none;
+  /* padding-top: 14px; */
+}
+.underline-title {
+  background: linear-gradient(45deg,#b95ce4,#4f29cd);
+
+  height: 2px;
+  margin: -1.1rem auto 0 auto;
+  width: 89px;
+}
+
+/* //close item */
+.close1{
+  font-size: 23px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-left: 93%;
+}
+.close1:hover{
+  font-size: 24px;
+  color:  #4f29cd;
+
+}
+.form-text {
+  margin-top: .15rem;
+  font-size: 10px;
+  color: #6c757d;
+}
+
+#pass_help{
+  display: none;
+}
+#email_help{
+  display: none;
+}
+
+
+
+
+/* /////////sign in  End  */
+
+/* /////////Card CSS Start  */
+.ContainerMin{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 1200px;
+  flex-wrap: wrap;
+  padding: 40px 0;
+}
+.ContainerMin .cardbox{
+  position: relative;
+  width: 260px;
+    height: 370px;
+  box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.05),
+  inset -5px -5px 5px rgba(255, 255, 255, 0.5),
+   5px 5px 5px rgba(0, 0, 0, 0.05),
+   -5px -5px 5px rgba(255, 255, 255, 0.5)
+  ;
+  border-radius: 15px;
+  margin: 30px;
+}
+.ContainerMin .cardbox .box{
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  background: #ebf5fc;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+  
+
+}
+
+.ContainerMin .cardbox:hover .box{
+  transform: translateY(-50px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(45deg,#b95ce4,#4f29cd);
+
+}
+
+.ContainerMin .cardbox .box .content{
+  padding: 20px;
+  text-align: center;
+}
+.ContainerMin .cardbox .box .content h2{
+  position: absolute;
+  top: -7px;
+  right: 11px;
+  font-size: 5rem;
+  color: rgba(0, 0, 0, 0.02);
+  transition: 0.5s;
+  pointer-events: none;
+}
+
+
+.ContainerMin .cardbox:hover .box .content h2{
+color: rgba(0, 0, 0, 0.05);
+
+}
+
+.ContainerMin .cardbox .box .content h3{
+font-size: 1.8em;
+color: #777;
+z-index: 1;
+transition: 0.5s;
+
+}
+.ContainerMin .cardbox:hover .box .content h3,
+.ContainerMin .cardbox:hover .box .content p
+{
+color: #fff;
+
+}
+
+.ContainerMin .cardbox .box .content p{
+  font-size: 1em;
+  font-weight: 300;
+  color: #777;
+  z-index: 1;
+  transition: 0.5s;
+}
+
+.ContainerMin .cardbox .box .content a{
+  position: relative;
+  display: inline-block;
+  padding: 8px 20px;
+  background: #03a9f4;
+  margin-top: 15px;
+  border-radius: 20px;
+  color: #fff;
+  text-decoration:none;
+  font-weight: 400;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+.ContainerMin .cardbox:hover .box .content a{
+background-color: #ff568f;
+transform: scale(1.07);
+
+}
+.imgSizeMin{
+  width: 177px;
+    height: 137px;
+    border: 10px solid #dfecf5;
+    border-radius: 15px;
+}

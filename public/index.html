@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
+  <base href="/" />
+  <link type="text/css" rel="stylesheet" href="../css/style.css" />
+  <title>NCSCM App</title>
+</head>
+
+<body>
+  <div class="grid-container">
+    <header>
+      <div class="popUpSignUp1">
+        <div id="card">
+          <span onclick="removePopup(event)" class="close1">x</span>
+
+          <div id="card-content">
+            <div id="card-title">
+              <h2>LOGIN</h2>
+              <div class="underline-title"></div>
+            </div>
+            <form class="form" id="form" onsubmit="signUp(event)" role="form" action="../index.html" >
+              <label for="input_email" style="padding-top: 13px">
+                &nbsp;Email
+              </label>
+              <input id="input_email" class="form-content" type="email" name="email" autocomplete="on" required />
+              <div id="form-border" class="form-border"></div>
+              <div id="email_help" class="form-text">
+                <small> eg: username@modee.gov.jo</small>
+              </div>
+
+              <label for="input_pass" style="padding-top: 22px">&nbsp;Password
+              </label>
+              <input id="input_pass" class="form-content" type="password" name="password" required />
+              <div id="form-borderPass" class="form-border"></div>
+              <div id="pass_help" class="form-text">
+                <small>The Password should be between 6-18 characters.</small>
+              </div>
+
+              <a>
+                <legend id="forgot-pass">Forgot password?</legend>
+              </a>
+
+              <input value="Sign Up" id="signup_btn" type="submit" name="submit" value="LOGIN" />
+              <a href="#" id="signup">Don't have account yet?</a>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav">
+        <ul>
+          <img class="imgelogojo" src="../img/Jordan_coat_of_arms-removebg-preview.png" alt="" />
+          <li><a href="#" class="navlist nav-link">Home</a></li>
+          <li><a href="#" class="navlist nav-link">FAQ</a></li>
+          <li><a href="#" class="navlist nav-link">Contact Us</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <main class="mainSection">
+      <div class="ContainerMin">
+        <!-- //first card -->
+        <div class="cardbox">
+          <div class="box">
+            <div class="content">
+              <h2>01</h2>
+              <h3>وزارة الاشغال</h3>
+              <p><img class="imgSizeMin" src="./img/MPWH.jpg" alt="" /></p>
+              <a href="#" onclick="registerNow(event)" id="pubWorkMin" class="startQuiz">Sign In</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- //second card -->
+        <div class="cardbox">
+          <div class="box">
+            <div class="content">
+              <h2>02</h2>
+              <h3>وزارة الزراعة</h3>
+              <p><img class="imgSizeMin" src="./img/MoArch.jpg" alt="" /></p>
+
+              <a href="#" onclick="registerNow(event)" id="AgricMin" class="startQuiz">Sign In</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- //third card -->
+        <div class="cardbox">
+          <div class="box">
+            <div class="content">
+              <h2>03</h2>
+              <h3>وزارة المياه والرّي</h3>
+              <p><img class="imgSizeMin" src="./img/MOwater.jpg" alt="" /></p>
+
+              <a href="#" onclick="registerNow(event)" id="waterMin" class="startQuiz">Sign In</a>
+            </div>
+          </div>
+        </div>
+        <!-- // card Four -->
+        <div class="cardbox">
+          <div class="box">
+            <div class="content">
+              <h2>04</h2>
+              <h3>وزارة البيئة</h3>
+              <p><img class="imgSizeMin" src="./img/envir.jpg" alt="" /></p>
+
+              <a href="#" onclick="registerNow(event)" id="enviroMin" class="startQuiz">Sign In</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="welcomepar">
+     
+    بالتعاون مع وزارة الاقتصاد الرقمي والريادة ومركز وادارة الازمات يعتبر هذا الموقع مرجع لرفع البيانات والتحديث الدوري <br>
+                                                                     يرجى <small><a id="signin" onclick="registerNow(event)" href=""> تسجيل الدخول</a></small> لتتمكن من رفع الملفات
+
+</div> -->
+    </main>
+
+    <footer class="centerGenral"></footer>
+  </div>
+
+  <script>
+    const registerNow = (e) => {
+      document.querySelector(".popUpSignUp1").style.display = "flex";
+      document.querySelector(".grid-container").style.overflow='hidden'
+      e.preventDefault();
+    };
+
+    const removePopup = (e) => {
+      document.querySelector(".popUpSignUp1").style.display = "none";
+      document.querySelector(".grid-container").style.overflow='visible'
+
+
+    };
+
+    let startQuiz = document.querySelectorAll(".startQuiz");
+    startQuiz.forEach((x) => {
+      x.addEventListener("click", (e) => {
+        console.log(x.id);
+        localStorage.setItem("Ministry_ID", x.id);
+      });
+    });
+  </script>
+  <script src="../js/app.js"></script>
+  <script src="../index.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+    />
+    <!-- <base href="/">  -->
+    <link type="text/css" rel="stylesheet" href="./css/excelsheetWater.css" />
+    <script
+      type="text/javascript"
+      src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"
+    ></script>
+    <title>Environment Ministry</title>
+  </head>
+  <body>
+    <div class="grid-container">
+      <header>
+        <div class="nav">
+          <ul>
+            <img
+              class="imgelogojo"
+              src="./img/Jordan_coat_of_arms-removebg-preview.png"
+              alt=""
+            />
+            <li><a href="#" class="navlist nav-link">Home</a></li>
+            <li><a href="#" class="navlist nav-link">FAQ</a></li>
+            <li><a href="#" class="navlist nav-link">Contact Us</a></li>
+          </ul>
+        </div>
+      </header>
+
+
+
+
+
+
+      <main class="mainSection">
+        <div class="container">
+          <!-- First excel  -->
+
+          <div class="row">
+            <div class="col">
+              <div class="container cardExcelSheet">
+                <h2 class="text-center mt-4 mb-4">Upload Excel-sheet</h2>
+                <div class="card">
+                  <div class="card-header"><b>Select Excel File</b></div>
+                  <div class="card-body">
+                    <input type="file" class="excel_file"  data-type="firstCard" />
+                  </div>
+                </div>
+                <button class="submit" style="margin-left: 129px">
+                  submit
+                </button>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="excel-data" class="mt-5 displayData" data-type="firstCard">
+                <span onclick="removePopup(event)" class="close1">x</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ///the second card body to upload excel sheet  -->
+
+          <div class="row">
+            <div class="col">
+              <div class="container cardExcelSheet">
+                <h2 class="text-center mt-4 mb-4">Upload Excel-sheet</h2>
+                <div class="card">
+                  <div class="card-header"><b>Select Excel File</b></div>
+                  <div class="card-body">
+                    <input type="file" class="excel_file" data-type="secondCard"/>
+                  </div>
+                </div>
+                <button class="submit" style="margin-left: 129px">
+                  submit
+                </button>
+              </div>
+            </div>
+
+            <!-- ///second column to share display the result   -->
+            <div class="col">
+              <div class="excel-data" class="mt-5 displayData" data-type="secondCard">
+                <span onclick="removePopup(event)" class="close1">x</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      var sheet_data;
+      const excelFile = document.querySelectorAll(".excel_file");
+
+      excelFile.forEach((x) => {
+        console.log(x.dataset.type)
+        localStorage.setItem('CardOrder',x.dataset.type)
+        // localStorage.getItem('CardOrder')
+
+        x.addEventListener("change", (event) => {
+          // console.log(event)
+          var reader = new FileReader();
+          reader.readAsArrayBuffer(event.target.files[0]);
+          // console.log('reader',reader)
+
+          reader.onload = (event) => {
+            var data = new Uint8Array(reader.result);
+            // console.log('data',data)
+            var work_book = XLSX.read(data, { type: "array" });
+            // console.log('work_book ',work_book )
+
+            var sheet_name = work_book.SheetNames;
+            // console.log('sheet_name ',sheet_name)
+
+            sheet_data = XLSX.utils.sheet_to_json(
+              work_book.Sheets[sheet_name[0]],
+              { header: 1 }
+            );
+            // console.log('sheet_data ',sheet_data)
+
+            if (sheet_data.length > 0) {
+              var table_output =
+                '<table class="table table-striped table-bordered">';
+              // table_output+='<tr class="headerTable">'
+              //   table_output+='<td>'+sheet_data[0][0]+'</td>'
+              //   table_output+='<td>'+sheet_data[0][1]+'</td>'
+              //   table_output+='<td>'+sheet_data[0][2]+'</td>'
+              //   table_output+='</tr>'
+
+              for (var row = 1; row < sheet_data.length; row++) {
+                table_output += "<tr>";
+                for (var cell = 0; cell < sheet_data[row].length; cell++) {
+                  table_output += "<td>" + sheet_data[row][cell] + "</td>";
+                }
+                table_output += "</tr>";
+              }
+
+              table_output += "</table>";
+
+              document.querySelectorAll(".excel-data").forEach((x) => {
+                if(x.dataset.type== localStorage.getItem('CardOrder')){
+                  x.innerHTML = table_output;
+                }
+               
+              });
+            }
+          };
+        });
+      });
+
+      const button = document.querySelectorAll(".submit");
+      const DisplayTable = document.querySelectorAll(".excel-data");
+
+      // const removePopup = (e) => {
+      //   DisplayTable.forEach((x) => {
+      //     x.style.display = "none";
+      //   });
+      // };
+
+      button.forEach((x) => {
+      
+        x.addEventListener("click", async (event) => {
+          // const nameUser = document.getElementById("nameUser").value;
+          DisplayTable.forEach((x) => {
+              alert("your submit is success");
+            console.log(localStorage.getItem('CardOrder'))
+if(x.dataset.type== localStorage.getItem('CardOrder')){
+
+  x.style.display = "block";
+}  });
+
+          const data = { sheet_data };
+
+          const options = {
+            method: "POST",
+
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          };
+          const response = await fetch("/api", options);
+
+          const dataRes = await response.json();
+          console.log("dataResult", dataRes);
+        });
+      });
+    </script>
+    <script src="../index.js"></script>
+  </body>
+</html>

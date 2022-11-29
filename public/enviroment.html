@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <!-- <base href="/">  -->
+    <link type="text/css" rel="stylesheet" href="./css/excelsheet.css">
+    <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+    <title>Environment Ministry</title>
+</head>
+<body>
+
+    <div class="grid-container">
+<header>
+        <div class="nav">
+            <ul>
+              <img class="imgelogojo" src="./img/Jordan_coat_of_arms-removebg-preview.png" alt="">
+              <li><a href="#" class="navlist nav-link">Home</a></li>
+              <li><a href="#" class="navlist nav-link">FAQ</a></li>
+              <li><a href="#" class="navlist nav-link">Contact Us</a></li>
+            </ul>
+          </div>
+        </header>
+
+
+        <main class="mainSection">
+    
+          <div class="container"> 
+             <!-- First excel  -->
+
+            <div class="col">
+              <div class="row">
+                
+                <div class="container cardExcelSheet">
+                  <h2 class="text-center mt-4 mb-4"> Upload Excel-sheet</h2>
+                  <div class="card">
+                      <div class="card-header"><b>Select Excel File</b></div>
+            <div class="card-body">
+            
+              <input type="file" id="excel_file" />
+            </div>
+                  </div>
+                  <button onclick="alert('your submit is success')" id="submit" style="margin-left:129px;">submit</button>
+
+              </div>
+              </div>
+
+              
+              <div class="row">
+                <div id="excel-data" class="mt-5 displayData">
+
+                </div>
+                <span onclick="removePopup(event)" class="close1">x</span>
+              </div>
+
+
+
+            </div>
+
+
+          </div>
+
+
+
+
+
+        </main>
+        
+        
+          </div>
+        
+    </div>
+
+
+
+
+
+    <script>
+
+        var sheet_data;
+              const excelFile=document.getElementById('excel_file')
+        excelFile.addEventListener('change',(event)=>{
+            // console.log(event)
+        var reader=new FileReader()
+        reader.readAsArrayBuffer(event.target.files[0]);
+        // console.log('reader',reader)
+        
+        reader.onload=(event)=>{
+        var data=new Uint8Array(reader.result);
+        // console.log('data',data)
+        var work_book = XLSX.read(data, {type:'array'});
+        // console.log('work_book ',work_book )
+        
+        var sheet_name = work_book.SheetNames;
+        // console.log('sheet_name ',sheet_name)
+        
+         sheet_data = XLSX.utils.sheet_to_json(work_book.Sheets[sheet_name[0]], {header:1});
+        // console.log('sheet_data ',sheet_data)
+        
+        if(sheet_data.length>0){
+            var table_output='<table class="table table-striped table-bordered">'
+              // table_output+='<tr class="headerTable">'
+              //   table_output+='<td>'+sheet_data[0][0]+'</td>'
+              //   table_output+='<td>'+sheet_data[0][1]+'</td>'
+              //   table_output+='<td>'+sheet_data[0][2]+'</td>'
+              //   table_output+='</tr>'
+        
+        for(var row=1;row<sheet_data.length;row++){
+         
+            table_output+='<tr>'
+            for(var cell=0;cell<sheet_data[row].length;cell++){
+                table_output+='<td>'+sheet_data[row][cell]+'</td>'
+              
+            }
+            table_output+='</tr>'
+          
+        }
+        
+        table_output+='</table>'
+        document.getElementById('excel-data').innerHTML=table_output
+        }
+        
+        
+        }
+        
+        })
+
+
+    
+        
+              const button = document.getElementById("submit");
+              const DisplayTable=document.getElementById("excel-data")
+               const closeButton =document.querySelector('.close1')
+
+              
+
+              const removePopup = (e) => {
+                DisplayTable.style.display = "none";
+
+
+    };
+
+
+
+              button.addEventListener("click", async (event) => {
+             
+                // const nameUser = document.getElementById("nameUser").value;
+                
+                DisplayTable.style.display='block'
+                closeButton.style.display='block'
+                const data ={sheet_data}
+        
+                const options = {
+                  method: "POST",
+        
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify(data),
+                };
+                const response = await fetch("/api", options);
+        
+                const dataRes = await response.json();
+                console.log('dataResult',dataRes);
+        
+              });
+        
+            </script>
+            <script src="../index.js"></script>
+ </body>
+</html>

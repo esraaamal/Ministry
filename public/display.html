@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+body {
+  /* cursor: pointer; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #ebf5fc;
+}
+.ContainerMin{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 1200px;
+  flex-wrap: wrap;
+  padding: 40px 0;
+}
+.ContainerMin .card{
+  position: relative;
+  width: 260px;
+    height: 370px;
+  box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.05),
+  inset -5px -5px 5px rgba(255, 255, 255, 0.5),
+   5px 5px 5px rgba(0, 0, 0, 0.05),
+   -5px -5px 5px rgba(255, 255, 255, 0.5)
+  ;
+  border-radius: 15px;
+  margin: 30px;
+}
+.ContainerMin .card .box{
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  background: #ebf5fc;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+  
+
+}
+
+.ContainerMin .card:hover .box{
+  transform: translateY(-50px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(45deg,#b95ce4,#4f29cd);
+
+}
+
+.ContainerMin .card .box .content{
+  padding: 20px;
+  text-align: center;
+}
+.ContainerMin.card .box .content h2{
+  position: absolute;
+  top: -7px;
+  right: 11px;
+  font-size: 5rem;
+  color: rgba(0, 0, 0, 0.02);
+  transition: 0.5s;
+  pointer-events: none;
+}
+
+
+.ContainerMin .card:hover .box .content h2{
+color: rgba(0, 0, 0, 0.05);
+
+}
+
+.ContainerMin .card .box .content h3{
+font-size: 1.8em;
+color: #777;
+z-index: 1;
+transition: 0.5s;
+
+}
+.ContainerMin .card:hover .box .content h3,
+.ContainerMin .card:hover .box .content p
+{
+color: #fff;
+
+}
+
+.ContainerMin .card .box .content p{
+  font-size: 1em;
+  font-weight: 300;
+  color: #777;
+  z-index: 1;
+  transition: 0.5s;
+}
+
+.ContainerMin .card .box .content a{
+  position: relative;
+  display: inline-block;
+  padding: 8px 20px;
+  background: #03a9f4;
+  margin-top: 15px;
+  border-radius: 20px;
+  color: #fff;
+  text-decoration:none;
+  font-weight: 400;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+.ContainerMin .card:hover .box .content a{
+background-color: #ff568f;
+transform: scale(1.07);
+
+}
+.imgSizeMin{
+  width: 177px;
+    height: 137px;
+    border: 10px solid #dfecf5;
+    border-radius: 15px;
+}
+  </style>
+</head>
+<body>
+  <div class="ContainerMin">
+<!-- //first card -->
+<div class="card" >
+  <div class="box">
+    <div class="content">
+      <h2>01</h2>
+      <h3>وزارة الاشغال</h3>
+      <p><img class="imgSizeMin" src="./img/MPWH.jpg" alt=""></p>
+         <a href="#" id="pubWorkMin" class="startQuiz">Sign In</a>
+        </div>
+  </div>
+</div>
+
+
+<!-- //second card -->
+<div class="card" >
+  <div class="box">
+    <div class="content">
+      <h2>02</h2>
+      <h3>وزارة الزراعة</h3>
+      <p><img class="imgSizeMin" src="./img/MoArch.jpg" alt=""></p>
+
+         <a href="#" id="AgricMin" class="startQuiz">Sign In</a>
+    </div>
+  </div>
+</div>
+
+<!-- //third card -->
+<div class="card">
+  <div class="box">
+    <div class="content">
+      <h2>03</h2>
+      <h3>وزارة المياه والرّي</h3>
+      <p><img class="imgSizeMin" src="./img/MOwater.jpg" alt=""></p>
+
+         <a href="#"  id="waterMin" class="startQuiz">Sign In</a>
+   
+        </div>
+  </div>
+</div>
+<!-- // card Four -->
+<div class="card">
+  <div class="box">
+    <div class="content">
+      <h2>04</h2>
+      <h3>وزارة البيئة</h3>
+      <p><img class="imgSizeMin" src="./img/envir.jpg" alt=""></p>
+
+         <a href="#" id="enviroMin" class="startQuiz">Sign In</a>
+   
+        </div>
+  </div>
+</div>
+
+
+  </div>
+
+
+
+
+
+  <script>
+let startQuiz=document.querySelectorAll('.startQuiz')
+startQuiz.forEach((x)=>{
+  x.addEventListener('click',(e)=>{
+    console.log(x.id)
+    localStorage.setItem('Ministry_ID',x.id)
+  })
+})
+  </script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+
+html {
+    font-size: 62.5%; /*16px x 62.5=10px=1rem*/
+    box-sizing: border-box;
+  }
+  
+  
+  body {
+    margin: 0;
+    height: 100vh;
+    font-size: 1.6rem;
+    font-family: Helvetica, Arial, sans-serif;
+    overflow-x: hidden;
+    font-weight: 600;
+  }
+
+  .grid-container{
+    height: 100%;
+    display: grid;
+    grid-template-areas: 
+    "header"
+    "main"
+    
+    ;
+    grid-template-columns: 1fr;
+    grid-template-rows: 6rem 1fr ;
+  }
+
+  header {
+    grid-area: header;
+    /* background: #ecf1f5; */
+  }
+  
+  
+  main {
+    grid-area: main;
+    padding: 1rem;
+  }
+  
+  /* footer {
+    grid-area: footer;
+    background:  white;;
+    color: #000;
+   
+  
+  } */
+  .centerGenral{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+  }
+
+  
+  /* //nav bar  */
+  .nav {
+    background:white;
+    /* height: 65px;  */
+   
+  }
+  
+  /* This rule centers the nav items verticaly in the bar with the height and line height properties. Spacing between the nav items is controlled by setting right and left padding.  */
+  .nav li {
+    display: inline-block;
+    list-style: none;
+    /* height: 65px;  */
+    /* line-height: 65px;  */
+    padding: 16px 20px; 
+  }
+  
+  /* :hover allows you change the background color of the nav items when you mouse over them. Play around with the transition value to change the speed of the hover transition. */
+  .nav li:hover {
+   
+  background: linear-gradient(45deg,#b95ce4,#4f29cd);
+    transition: background .3s;
+    color: wheat;
+  }
+  
+  /* This rule is applied to the link <a> tag. It lets you turn off the link underline and set the link text color. */
+  a.nav-link {
+    color: rgb(7, 7, 7);
+    text-decoration: none;
+  }
+  a.nav-link:hover{
+    color: white;
+  }
+  
+  .imgelogojo{
+    width: 50px;
+    height: 54px;
+    cursor: pointer;
+    margin-right: 20px;
+    margin-bottom: 9px;
+  }
+  
+  .mainSection{
+  background: linear-gradient(45deg,#b95ce4,#4f29cd);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+  }
+  .welcomepar{
+    text-align: end;
+  }
+  
+  .mt-5, .my-5 {
+    margin-top: 5rem!important;
+    /* margin-right: 100px; */
+    margin-left: 7%;
+}
+.card{
+  /* width: 50%;
+  margin-left: 35%; */
+}
+.submit {
+
+  position: relative;
+  border: none;
+  padding: 9px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 6%;
+  margin-left: 200px;
+  left: 71px;
+}
+.submit:hover{
+  transform: scale(1.1);
+}
+.cardExcelSheet{
+
+}
+
+.excel-data{
+  display: none;
+}
+.displayData{
+  background: aliceblue;
+    position: relative;
+    overflow: scroll;
+    height: 300px;
+    border: 16px solid #f7f7f7;
+}
+
+.close1{
+  margin-left: 97%;
+    margin-top: -6px;
+    position: absolute;
+    z-index: 10;
+    cursor: pointer;
+    transform: scale(1,1);
+}
+
+.headerTable{
+  
+}
